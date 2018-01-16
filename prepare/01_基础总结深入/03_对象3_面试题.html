@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_对象3_面试题</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  var a = {}
+
+  var obj1 = {n: 2}
+  var obj2 = {m: 3}
+
+  a[obj1] = 4 //a['[object Object]'] = 4  注意：会自动调用对象的 toString()方法得到 '[object Object]'
+  a[obj2] = 5 //a['[object Object]'] = 5  覆盖
+
+  console.log(a[obj1]) // 输出多少? 5
+
+  /*var fn = function () {}
+  console.log(fn.toString());
+
+  console.log([].toString());
+
+  console.log({}.toString())*/
+
+  console.log(obj1.toString()); //'[object Object]'
+  console.log(obj1);            //{n: 2}
+
+  var arr1 = [1, 2]
+  console.log(arr1.toString()); //'1,2'
+  console.log(arr1);            //[1, 2]
+
+</script>
+</body>
+</html>

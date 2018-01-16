@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>03_原型链</title>
+</head>
+<body>
+<!--
+1. 原型链(图解)
+  * 访问一个对象的属性时，
+    * 先在自身属性中查找，找到返回
+    * 如果没有, 再沿着__proto__这条链向上查找, 找到返回
+    * 如果最终没找到, 返回undefined
+  * 别名: 隐式原型链
+  * 作用: 查找对象的属性(方法)
+2. 构造函数/原型/实体对象的关系(图解)
+3. 构造函数/原型/实体对象的关系2(图解)
+-->
+<script type="text/javascript">
+    //函数对象
+    console.log(Object);                    //ƒ Object() { [native code] }
+    //函数对象原型
+    console.log(Object.prototype);          //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+    //原型对象原型(原型对象也是对象，因此有__proto__属性)
+    console.log(Object.prototype.__proto__);//null
+
+    //注意：只要创建了实例对象，就会自动的将函数对象的显示原型赋值给实例对象的隐式原型！！！
+    //fn.__proto__ = Fn.prototype
+    //Fn原型对象是一个空的Object实例对象！！！
+    //Fn函数对象的原型对象的隐式原型指向Object函数对象的显示原型
+    //Fn.prototype.__proto__ = Object.prototype
+
+    function Fn() {}
+    //函数对象
+    console.log(Fn);                              //ƒ Fn() {}
+    //函数对象原型
+    console.log(Fn.prototype);                    //__proto__: Object
+    //原型对象原型
+    console.log(Fn.prototype.__proto__);          //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+    console.log(Fn.prototype.__proto__.__proto__);//null
+
+
+    console.log(Function);                              //ƒ Function() { [native code] }
+    console.log(Function.prototype);                    //ƒ () { [native code] }
+    //函数也是对象
+    console.log(Function.prototype.__proto__);          //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+    console.log(Function.prototype.__proto__.__proto__);//null
+
+    //ƒ () { [native code] }  所有函数对象的 __proto__ 属性值都相等
+    console.log(new Function().__proto__);
+
+    //var fn = new Fn()
+        //fn.test1()  //Object原型对象的__proto__属性为null，原型链尽头，没找到则返回undefined
+
+    /*function Fn() {
+    this.test1 = function () {
+      console.log('test1()')
+    }
+  }
+  Fn.prototype.test2 = function () {
+    console.log('test2()')
+  }
+  var fn = new Fn()
+
+  fn.test1()
+  fn.test2()
+  console.log(fn.toString())
+  fn.test3()*/
+</script>
+</body>
+</html>
