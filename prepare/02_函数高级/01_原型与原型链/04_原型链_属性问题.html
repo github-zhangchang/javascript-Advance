@@ -23,7 +23,7 @@
   var p1 = new Person('Tom', 12)
   p1.setName('Jack')
   console.log(p1.name, p1.age, p1.sex)
-  p1.sex = '女'
+  p1.sex = '女'//只会修改当前实例对象的sex属性，不会改变原型对象的sex属性
   console.log(p1.name, p1.age, p1.sex)
 
   var p2 = new Person('Bob', 23)

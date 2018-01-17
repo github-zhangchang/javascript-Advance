@@ -11,16 +11,21 @@
    */
 
   var fn = function () {
-    console.log(fn)
+    console.log(fn) //() { console.log(fn)}
   }
   fn()
 
   var obj = {
     fn2: function () {
-      console.log(fn2)
+      //注意：fn2 找的是全局作用域中的，此时只有 obj 对象中才有，所以报错
+        console.log(fn2)  //fn2 is not defined 报错！
+        // console.log(this.fn2);
     }
   }
   obj.fn2()
+
+  //函数的作用域在定义时就已经确定而不是调用时，函数上下文环境是在调用函数时创建，调用完后立即释放
+  //
 </script>
 </body>
 </html>

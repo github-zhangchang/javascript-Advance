@@ -17,7 +17,7 @@
     name: "My Object",
     getNameFunc: function () {
       return function () {
-        return this.name;
+          return this.name; //注意：函数中的 this 是window对象
       };
     }
   };
@@ -28,7 +28,7 @@
   var object2 = {
     name2: "My Object",
     getNameFunc: function () {
-      var that = this;
+      var that = this;  //注意：方法中的 this 是当前调用的对象
       return function () {
         return that.name2;
       };

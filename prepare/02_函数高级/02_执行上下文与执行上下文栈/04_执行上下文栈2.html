@@ -7,21 +7,21 @@
 <body>
 <!--
 1. 依次输出什么?
-2. 整个过程中产生了几个执行上下文?
+2. 整个过程中产生了几个执行上下文? 4 函数调用几次就产生几个执行上下文
 -->
 <script type="text/javascript">
-  console.log('global begin: '+ i)
+  console.log('global begin: '+ i)  //undefined
   var i = 1
-  foo(1);
-  function foo(i) {
+  foo(i);
+  function foo(i) { //值传递不会改变变量 i 的值
     if (i == 4) {
       return;
     }
-    console.log('foo() begin:' + i);
+    console.log('foo() begin:' + i);  //1,2,3
     foo(i + 1);
-    console.log('foo() end:' + i);
+    console.log('foo() end:' + i);    //3,2,1
   }
-  console.log('global end: ' + i)
+  console.log('global end: ' + i)     //1
 </script>
 
 </body>

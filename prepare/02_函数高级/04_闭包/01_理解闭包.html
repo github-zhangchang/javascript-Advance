@@ -18,13 +18,27 @@
   * 内部函数引用了外部函数的数据(变量/函数)
 -->
 <script type="text/javascript">
-  function fn1 () {
+  /*function fn1 () {
     var a = 3
-    function fn2 () {
-      console.log(a)
+    function fn2 (a) {
+      console.log(a)  //注意：此时 a 保存在闭包对象中（不是真实的js对象，只是内存中的一块区域）
+        return this
     }
+    return fn2()
   }
-  fn1()
+  var f = fn1()
+  console.log(f);*/
+
+  function fn1 (a, b) {
+      console.log(b);
+      return {
+          fn2:function (m) {
+              return fn1(m, a)
+          }
+      }
+  }
+
+  console.log(fn1(1).fn2(2));
 
 </script>
 </body>

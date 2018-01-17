@@ -11,24 +11,43 @@
    说说它们的输出情况
    */
 
-  function fun(n, o) {
-    console.log(o)
+  function fun(n, o) {//注意：闭包对象中保存了 n、o 两个变量
+      console.log(arguments);
+//      console.log(o)
     return {
       fun: function (m) {
-        return fun(m, n)
+          //注意：闭包对象在内部函数的 [[Scopes]] 属性中
+          //注意：形参必须对应
+        return fun(m, n)//m 对应内部函数形参 m，n 对应外部函数形参 n(保存在闭包对象中，取的是上次值)
       }
     }
   }
-  var a = fun(0)
-  a.fun(1)
-  a.fun(2)
-  a.fun(3) //undefined,?,?,?
 
-  var b = fun(0).fun(1).fun(2).fun(3) //undefined,?,?,?
+  var a = fun(0)      //n = 0
+  console.log(a);     //闭包中 n = 0
 
-  var c = fun(0).fun(1)
-  c.fun(2)
-  c.fun(3) //undefined,?,?,?
+  /*注意：a.fun(1) 执行完后，返回一个对象，该对象的方法中保存了闭包对象*/
+  /*注意：以下分别调用了3次，产生了3个闭包对象*/
+  var t1 = a.fun(1)  //0
+  console.log(t1);    //闭包中 n = 1
+
+  var t2 = a.fun(2)  //0
+//  console.log(t2);    //闭包中 n = 2
+
+  var t3 = a.fun(3)  //0
+//  console.log(t3);    //闭包中 n = 3
+
+  // undefined,?,?,?
+
+
+  //注意：以下只产生了1个闭包对象，原因：使用函数调用后的返回对象执行链式调用（该对象的方法中保存的闭包对象都是同一个）
+  var b = fun(0).fun(1).fun(2).fun(3) //undefined 0 1 2
+  //console.log(b);
+
+  var c = fun(0).fun(1) //undefined 0  注意：返回的闭包对象中的值此时为 1
+  //console.log(c); //闭包中 n = 1
+  c.fun(2)  //1
+  c.fun(3)  //1
 
 </script>
 </body>

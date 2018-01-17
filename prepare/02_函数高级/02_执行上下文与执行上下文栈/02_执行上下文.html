@@ -28,11 +28,11 @@
 -->
 <script type="text/javascript">
 
-  console.log(a1)
-  console.log(a2)
-  console.log(a3)
-  // console.log(a4)
-  console.log(this)
+  console.log(a1) //undefined
+  console.log(a2) //undefined
+  console.log(a3) //a3(){console.log('a3()')}
+  //console.log(a4) //a4 is not defined 报错！
+  console.log(this)//window
 
   var a1 = 3
   var a2 = function () {
@@ -45,22 +45,18 @@
 
 
   function fn(x, y) {
-    console.log(x, y)
-    console.log(b1)
-    console.log(b2)
-    console.log(arguments)
-    console.log(this)
+    console.log(x, y)     //undefined undefined
+    console.log(b1)       //undefined
+    console.log(b2)       //b2 () {}
+    console.log(arguments)//[callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    console.log(this)     //window
+    //console.log(b3)       //b3 is not defined 报错！
 
-    // console.log(b3)
-
-    var b1 = 5
-    function b2 () {
-
-    }
-    b3 = 6
+    var b1 = 5 //注意：变量声明提前，赋值不会提前
+    function b2 () {}//注意：整个函数定义提前
+    b3 = 6  //注意：不会预处理
   }
   fn()
-
 
 </script>
 </body>

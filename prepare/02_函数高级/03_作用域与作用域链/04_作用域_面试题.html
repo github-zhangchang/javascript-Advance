@@ -11,13 +11,13 @@
    */
   var x = 10;
   function fn() {
-    console.log(x);
+    console.log(x); //先在当前函数作用域中查找，没找到，然后在上一级（全局作用域）中查找
   }
   function show(f) {
     var x = 20;
     f();
   }
-  show(fn);
+  show(fn); //10 注意：在函数定义时，作用域就已经确定，跟调用无关！
 </script>
 </body>
 </html>

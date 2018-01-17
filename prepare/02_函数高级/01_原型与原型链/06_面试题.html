@@ -5,7 +5,7 @@
   <title>06_面试题</title>
 </head>
 <body>
-
+<!--尤雨溪 vue.js-->
 <script type="text/javascript">
   /*
   测试题1
@@ -13,34 +13,44 @@
   var A = function() {
 
   }
-  A.prototype.n = 1
 
+  A.prototype.n = 1
   var b = new A()
 
-  A.prototype = {
+//  console.log(b);
+
+  A.prototype = {//覆盖原型对象
     n: 2,
     m: 3
   }
 
   var c = new A()
-  console.log(b.n, b.m, c.n, c.m)
+//  console.log(c);
+  console.log(b.n, b.m, c.n, c.m)//1 undefined 2 3
 
 
   /*
    测试题2
    */
   var F = function(){};
+
   Object.prototype.a = function(){
     console.log('a()')
   };
+
   Function.prototype.b = function(){
     console.log('b()')
   };
+
   var f = new F();
-  f.a()
-  f.b()
-  F.a()
-  F.b()
+
+  //Function函数对象的原型对象的隐式原型 === Object对象的显示原型
+
+  f.a() // - __proto__(Function prototype) - __proto__(Object prototype) - a(Object原型对象中存在)
+  //f.b() // - __proto__(Function prototype) - __proto__(Object prototype) - __proto__(null)不存在！
+
+  F.a() // - __proto__(Function prototype) - __proto__(Object prototype) - a(Object原型对象中存在)
+  F.b() // - __proto__(Function prototype) - b(Function原型对象中存在)
 
 </script>
 </body>
