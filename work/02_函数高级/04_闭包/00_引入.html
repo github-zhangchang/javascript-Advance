@@ -13,6 +13,39 @@
 需求: 点击某个按钮, 提示"点击的是第n个按钮"
 -->
 <script type="text/javascript">
+
+  var btns = document.querySelectorAll('button')
+
+  //使用闭包方式实现 - 先将每次的 i 保存到闭包对象中，调用时直接取闭包对象中的 i
+  for (var i=0; i<btns.length; i++) {
+      (function (i) {
+          //存在 3 个闭包对象
+          btns[i].onclick = function () {
+//              alert(i+1)
+              console.log(i + 1);
+          }
+      })(i)
+  }
+
+  /*for (var i=0; i<btns.length; i++) {
+      btns[i].onclick = function () {
+          alert(i+1)
+      }
+  }*/
+
+  /*for (var i=0; i<btns.length; i++) {
+      btns[i].index = i
+      btns[i].onclick = function () {
+          alert(this.index+1)
+      }
+  }*/
+
+  /*for (let i=0; i<btns.length; i++) {
+      btns[i].onclick = function () {
+          alert(i+1)
+      }
+  }*/
+
 </script>
 </body>
 

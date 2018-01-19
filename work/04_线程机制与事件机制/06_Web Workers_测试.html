@@ -16,7 +16,20 @@
   * 不能跨域加载JS
   * 不是每个浏览器都支持这个新特性
 -->
+<button id="btn">模拟JS多线程</button>
 <script type="text/javascript">
+
+  document.getElementById('btn').onclick = function () {
+      //1.创建 Worker 线程对象
+      var worker = new Worker('worker.js')
+      //2.发送请求
+      worker.postMessage('你好，主线程')
+      //5.接收响应
+      worker.onmessage = function (e) {
+          console.log(e.data);
+      }
+  }
+
 </script>
 </body>
 </html>

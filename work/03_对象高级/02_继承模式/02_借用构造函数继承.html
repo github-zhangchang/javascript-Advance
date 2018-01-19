@@ -16,6 +16,25 @@
 -->
 <script type="text/javascript">
 
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+
+    function Student(name, age, price) {
+//        this.name = name
+//        this.age  = age
+        //call继承 - 重用属性
+        //原型链 - 重用方法
+        //将 Person 的指向改变为当前对象 this，相当于当前对象调用 Person 函数，实现间接继承
+        Person.call(this, name, age)
+
+        this.price = price
+    }
+
+    var s = new Student('admin', 12, 20000)
+    console.log(s);
+
 </script>
 </body>
 </html>

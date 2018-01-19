@@ -16,6 +16,17 @@
   一个人: name:"Tom", age: 12
    */
 
+  var p = {}
+      p.name = 'admin'
+      p.age = 12
+      p.setName = function (name) {
+          this.name = name
+      }
+
+  console.log(p);
+  p.setName('jerry')
+  console.log(p);
+
 </script>
 </body>
 </html>

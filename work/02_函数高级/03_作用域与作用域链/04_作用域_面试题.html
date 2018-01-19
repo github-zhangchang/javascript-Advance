@@ -13,11 +13,12 @@
   function fn() {
     console.log(x);
   }
-  function show(f) {
-    var x = 20;
+  function show(f) {//函数作为参数传递时，内部结构就已经确定
+    var x = 30;//定义新的局部变量
     f();
   }
-  show(fn);
+  x = 50
+  show(fn); //10  50
 </script>
 </body>
 </html>

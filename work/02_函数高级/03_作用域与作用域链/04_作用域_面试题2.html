@@ -11,16 +11,21 @@
    */
 
   var fn = function () {
-    console.log(fn)
+    console.log(fn) //输出函数定义
   }
   fn()
 
   var obj = {
     fn2: function () {
-      console.log(fn2)
+        //注意：在对象内部必须使用 this 关键字调用内部属性
+        //不能使用变量调用，必须对象.属性
+        console.log(obj.fn2)  //fn2 is not defined
+//      console.log(window.fn2) //undefined
+//      console.log(this.fn2)   //函数体
     }
   }
   obj.fn2()
+
 </script>
 </body>
 </html>

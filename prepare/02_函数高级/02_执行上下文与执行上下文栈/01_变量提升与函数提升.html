@@ -21,21 +21,22 @@
    */
   var a = 4
   function fn () {
+      //如果内部有，优先使用
     console.log(a)  //undefined - 注：并没有将全局 a 作为形参传递进来
     var a = 5
   }
   fn()
 
-
   /*变量提升*/
   console.log(a1) //可以访问, 但值是undefined
   /*函数提升*/
-  a2() // 可以直接调用
+  a2() // 可以直接调用，定义提升
 
   var a1 = 3
   function a2() {
     console.log('a2()')
   }
+
 </script>
 </body>
 </html>

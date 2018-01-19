@@ -24,7 +24,33 @@
     * 发送ajax请求
   * 后面在某个时刻才会执行回调代码
 -->
-<script type="text/javascript">
-</script>
 </body>
 </html>
+<script type="text/javascript">
+
+    function fn1() {
+        console.log('fn 1');
+    }
+    fn1()
+
+    setTimeout(function () {
+        console.log('setTimeout 1');
+    },0)
+    setTimeout(function () {
+        console.log('setTimeout 3');
+    },3000)
+    setTimeout(function () {
+        console.log('setTimeout 2');
+        alert('+++++++++')
+    },2000)
+
+    function fn2() {
+        console.log('fn 2');
+    }
+    fn2()
+
+    console.log('alert 之前');
+    alert('----------') //alert作用：暂停主线程的执行和分线程的计时，点击确定后恢复主线程、分线程
+    console.log('alert 之后');
+
+</script>

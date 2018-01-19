@@ -18,6 +18,21 @@
   * 事件循环模型(后面讲)
 -->
 <script type="text/javascript">
+
+    document.getElementById('btn').onclick = function () {
+        var start = Date.now()
+
+        //注意：回调函数一定是在初始化代码执行完后执行
+        setTimeout(function () {
+            console.log('执行了：' , Date.now() - start);
+        }, 100)
+
+
+        for (var i=0; i<1000000000; i++){}
+
+        console.log('完成长时间代码：' , Date.now() - start);
+    }
+
 </script>
 </body>
 </html>

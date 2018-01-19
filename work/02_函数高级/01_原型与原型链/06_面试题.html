@@ -10,21 +10,20 @@
   /*
   测试题1
    */
-  var A = function() {
+  var A = function() {}
 
-  }
   A.prototype.n = 1
 
   var b = new A()
 
+  //注意：覆盖默认原型属性，从当前位置开始新的对象才拥有原型属性
   A.prototype = {
     n: 2,
     m: 3
   }
 
   var c = new A()
-  console.log(b.n, b.m, c.n, c.m)
-
+  console.log(b.n, b.m, c.n, c.m) //1 undefined 2 3
 
   /*
    测试题2
@@ -37,10 +36,14 @@
     console.log('b()')
   };
   var f = new F();
-  f.a()
-  f.b()
-  F.a()
-  F.b()
+
+  f.a() //a()
+  //f.b() //报错！
+
+  //注意：查找的方向始终是 __proto__ 隐式原型链
+  //总结：隐式原型查找属性，显示原型设置属性（不会查找！！）
+  F.a() //a()
+  F.b() //b()
 
 </script>
 </body>

@@ -12,6 +12,27 @@
 -->
 <script type="text/javascript">
 
+  function Person(name, age) {
+      this.name = name
+      this.age = age
+  }
+
+  Person.prototype.setName = function(name){
+      this.name = name
+  }
+
+  Person.prototype.sex = 'Male'
+
+  var p1 = new Person('jerry', 18)
+  console.log(p1.name, p1.age, p1.sex); //jerry 18 Male
+
+  p1.setName('marry') //只修改自身属性
+  p1.sex = 'Female'   //只添加自身属性，对原型属性不会产生影响
+  console.log(p1.name, p1.age, p1.sex); //marry 18 Female
+
+  var p2 = new Person('jack', 20)
+  console.log(p2.name, p2.age, p2.sex); //jack 20 Male
+
 </script>
 </body>
 </html>

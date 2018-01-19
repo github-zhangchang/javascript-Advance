@@ -17,6 +17,25 @@
 -->
 <script type="text/javascript">
 
+  function Fn() {}
+  var fn = new Fn()
+
+  console.log(Fn.prototype, fn.__proto__);    //Fn
+  console.log(Fn.prototype === fn.__proto__); //true
+
+  Fn.prototype.test = function () {
+      console.log('test()');
+  }
+  fn.test()
+
+  //Fn.test = function(){console.log('test');}
+  //Fn.test()
+
+  fn.__proto__.demo = function () {
+      console.log('demo()');
+  }
+  fn.demo()
+
 </script>
 </body>
 </html>

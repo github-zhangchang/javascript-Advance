@@ -12,6 +12,19 @@
   * 问题: 如果创建多个对象, 有重复代码
 -->
 <script type="text/javascript">
+
+  var p = {
+      name:'admin',
+      age:12,
+      setName:function (name) {
+          this.name = name
+      }
+  }
+
+  console.log(p);
+  p.setName('jerry')
+  console.log(p);
+
 </script>
 </body>
 </html>

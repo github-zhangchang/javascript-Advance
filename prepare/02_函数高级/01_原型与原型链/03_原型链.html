@@ -25,6 +25,7 @@
     console.log(Object.prototype.__proto__);//null
 
     //注意：只要创建了实例对象，就会自动的将函数对象的显示原型赋值给实例对象的隐式原型！！！
+    //将隐式原型的构造器指向构造函数
     //fn.__proto__ = Fn.prototype
     //Fn原型对象是一个空的Object实例对象！！！
     //Fn函数对象的原型对象的隐式原型指向Object函数对象的显示原型
@@ -32,22 +33,22 @@
 
     function Fn() {}
     //函数对象
-    console.log(Fn);                              //ƒ Fn() {}
+    console.log(Fn);                              //'ƒ Fn() {}'
     //函数对象原型
-    console.log(Fn.prototype);                    //__proto__: Object
+    console.log(Fn.prototype);                    //Fn
     //原型对象原型
-    console.log(Fn.prototype.__proto__);          //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+    console.log(Fn.prototype.__proto__);          //Object
     console.log(Fn.prototype.__proto__.__proto__);//null
-
+    console.log(Fn.__proto__);                    //Function
 
     console.log(Function);                              //ƒ Function() { [native code] }
     console.log(Function.prototype);                    //ƒ () { [native code] }
     //函数也是对象
-    console.log(Function.prototype.__proto__);          //{constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+    console.log(Function.prototype.__proto__);          //Object
     console.log(Function.prototype.__proto__.__proto__);//null
 
     //ƒ () { [native code] }  所有函数对象的 __proto__ 属性值都相等
-    console.log(new Function().__proto__);
+    //console.log(new Function().__proto__);
 
     //var fn = new Fn()
         //fn.test1()  //Object原型对象的__proto__属性为null，原型链尽头，没找到则返回undefined

@@ -27,6 +27,33 @@
   * 开始执行函数体代码
 -->
 <script type="text/javascript">
+    console.log(a1)   //undefined
+    console.log(a2)   //undefined
+    console.log(a3)   //console.log('a3()')
+    console.log(this) //window
+    //console.log(a4);  //报错！a4 is not defined
+
+    var a1 = 3
+    var a2 = function () {
+        console.log('a2()')
+    }
+    function a3() {
+        console.log('a3()')
+    }
+    a4 = 4
+
+    function fn(x, y) {
+        console.log(x, y)//undefined
+        console.log(b1)   //undefined
+        console.log(b2)   //函数定义
+        console.log(arguments)//没有实参列表
+        console.log(this)//window
+
+        var b1 = 5
+        function b2 () {}
+        b3 = 6
+    }
+    fn()
 
 </script>
 </body>

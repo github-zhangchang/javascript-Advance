@@ -17,7 +17,7 @@
 
   var obj = {
     fn2: function () {
-      //注意：fn2 找的是全局作用域中的，此时只有 obj 对象中才有，所以报错
+        //在对象内部不能使用变量调用属性，必须使用对象.属性
         console.log(fn2)  //fn2 is not defined 报错！
         // console.log(this.fn2);
     }

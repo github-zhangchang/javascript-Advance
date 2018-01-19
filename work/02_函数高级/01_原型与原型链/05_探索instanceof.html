@@ -13,6 +13,24 @@
 -->
 <script type="text/javascript">
 
+  function Fn() {}
+  var fn = new Fn()
+
+  console.log(fn instanceof Fn);        //true
+  console.log(fn instanceof Object);    //true
+  console.log(fn instanceof Function);  //false
+
+  console.log(Fn instanceof Object);    //true - 注：此时 Fn 作为实例对象查找原型链，而不是函数对象
+  console.log(Fn instanceof Function);  //true - 注：此时 Fn 作为实例对象查找原型链，而不是函数对象
+
+  console.log(Function instanceof Fn);  //false
+  console.log(Object instanceof Fn);    //false
+
+  console.log(Function instanceof Object);    //true
+  console.log(Function instanceof Function);  //true
+  console.log(Object instanceof Function);    //true
+  console.log(Object instanceof Object);      //true
+
 </script>
 </body>
 </html>

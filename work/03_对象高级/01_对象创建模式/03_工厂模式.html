@@ -12,6 +12,24 @@
   * 问题: 对象没有一个具体的类型, 都是Object类型
 -->
 <script type="text/javascript">
+
+  //工厂模式 - 将对象返回
+  function createPerson(name, age) {
+      var p = {
+          name:name,
+          age:age,
+          setName:function (name) {
+              this.name = name
+          }
+      }
+      return p
+  }
+
+  var p = createPerson('admin', 18)
+      console.log(p);
+      p.setName('jerry')
+      console.log(p);
+
 </script>
 </body>
 </html>

@@ -12,6 +12,37 @@
 -->
 <script type="text/javascript">
 
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+    }
+    Person.prototype.setName = function (name) {
+        this.name = name
+    }
+
+    function Student(name, age, price) {
+        //this.name = name
+        //this.age = age
+        //借用Person的属性
+        //Person.call(this, name, age)
+        Person.apply(this,[name, age])
+        this.price = price
+    }
+
+    //Student的原型指向Person的实例，让Student的实例拥有Person原型中的方法
+    Student.prototype = new Person()
+    //修正Student实例对象的constructor为Student
+    Student.prototype.constructor = Student
+
+    Student.prototype.setPrice = function (price) {
+        this.price = price
+    }
+
+    var s = new Student('admin', 12, 20000)
+    console.log(s);
+        s.setName('jerry')
+    console.log(s);
+
 </script>
 </body>
 </html>

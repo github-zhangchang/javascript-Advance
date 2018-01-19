@@ -14,6 +14,36 @@
 -->
 <script type="text/javascript">
 
+//通过构造器可直接查看所指向的原型对象
+//注意：函数对象存在2种状态（原型对象、实例对象）
+console.log(Date.prototype);  //Date 函数对象的显示原型（作为函数对象访问原型时）
+console.log(Date.__proto__);  //{ [native code] } 函数对象的隐式原型（作为实例对象访问原型时）
+console.log(Date);    //底层源码封装
+console.log(Object);  //底层源码封装
+
+console.log(typeof Date);                     //'function'
+console.log(typeof Date.prototype);           //'object'
+console.log(typeof Date.__proto__);           //'function'
+console.log(typeof Date.__proto__.__proto__); //'object'
+
+console.log(typeof Object.__proto__);         //'function'
+
+
+function Fun(){}//函数对象：先是函数、后是对象
+console.log(typeof Fun);                  //'function'
+console.log(typeof new Fun());            //'object'
+console.log(typeof new Fun().__proto__);  //'object'
+
+
+//console.log(Fun.prototype);                 //Fun
+//console.log(Fun.__proto__.__proto__);       //Function -> Object
+//console.log(new Fun().prototype);           //undefined
+//console.log(new Fun().__proto__.__proto__); //Fun -> Object
+
+//函数对象的原型对象的构造器属性指向函数对象本身
+console.log(Date.prototype.constructor === Date); //true
+console.log(Fun.prototype.constructor === Fun);   //true
+
 </script>
 </body>
 </html>

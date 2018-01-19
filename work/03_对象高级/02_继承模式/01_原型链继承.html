@@ -20,6 +20,42 @@
 -->
 <script type="text/javascript">
 
+    //父类型
+    function Super() {
+        this.superProp = 'superProp'
+    }
+    Super.prototype.showSupperProp = function () {
+        console.log(this.superProp);
+    }
+
+    //子类型
+    function Sub() {
+        this.subProp = 'subProp'
+    }
+
+    //将子类型的原型指向父类型的实例，拥有父类型的方法
+    Sub.prototype = new Super()
+    //修正子类型的原型对象的构造器指向子类型
+    Sub.prototype.constructor = Sub
+
+    Sub.prototype.showSubProp = function () {
+        console.log(this.subProp);
+    }
+
+    //子类实例
+    var sub = new Sub()
+
+    //sub.toString()  //??
+    //Sub的原型指向Object的原型对象，因此可以使用Object原型的方法，同理！指向Super的原型对象，也可使用Super原型的方法
+
+    //调用子类方法
+        sub.showSubProp()
+    //调用父类方法
+        sub.showSupperProp()
+    console.log(sub.constructor === Sub, sub);
+    console.log(Sub.constructor === Function);
+
+
 </script>
 </body>
 </html>

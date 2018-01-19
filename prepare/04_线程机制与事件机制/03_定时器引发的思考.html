@@ -21,6 +21,7 @@
   document.getElementById('btn').onclick = function () {
     var start = Date.now()
     console.log('启动定时器')
+    //注意：定时器必定时在初始化代码，执行完成后执行！！，再执行回调代码，原因：js是单线程的！！
     setTimeout(function () {
       console.log('定时器执行了: ', Date.now()-start)
     }, 100)
